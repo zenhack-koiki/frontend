@@ -16,8 +16,8 @@ module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
   port: Number( process.env.PORT || 3000 ),
   api: {
-    host: 'chaus.herokuapp.com',
-    port: 443
+    host: '52.197.202.44',
+    port: 80
   },
   app: {
     title: title,

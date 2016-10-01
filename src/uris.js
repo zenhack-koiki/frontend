@@ -1,10 +1,6 @@
 import config from './config';
-const base = ( config.api.port === 443 ? 'https' : 'http' ) +
-             '://' +
-             config.api.host +
-             ( config.api.port === 80 || config.api.port === 443
-               ? ''
-               : ':' + config.api.port);
+const base = 'http://localhost:3000';
+console.log(config);
 
 const uris = {
   base,

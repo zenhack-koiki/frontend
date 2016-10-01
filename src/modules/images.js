@@ -5,6 +5,7 @@ const LOAD_FAIL = 'images/LOAD_FAIL';
 
 const initialState = {
   items: [],
+  index: 0,
   loaded: false
 };
 export default function reducer(state = initialState, action = {}) {
@@ -15,13 +16,12 @@ export default function reducer(state = initialState, action = {}) {
         loading: true
       };
     case LOAD_SUCCESS:
-      const items = action.res.items;
+      const items = action.res;
       return {
         ...state,
         loading: false,
         loaded: true,
         items,
-        candidate: items.length ? items[0].id : '',
         index: 0
       };
     case LOAD_FAIL:

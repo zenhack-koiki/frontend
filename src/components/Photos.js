@@ -24,11 +24,18 @@ export default class Photos extends Component {
           images.map((image, _index) =>
             index < _index ?
               <Swipeable
+                key={image.id}
                 onSwipedLeft={
-                  () => onLike(image.id)
+                  () => onLike({
+                    image_id: image.id,
+                    session_id: new Date().getTime()
+                  })
                 }
                 onSwipedRight={
-                  () => onDislike(image.id)
+                  () => onDislike({
+                    image_id: image.id,
+                    session_id: new Date().getTime()
+                  })
                 }
               >
                 <img
