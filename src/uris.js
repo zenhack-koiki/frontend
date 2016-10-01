@@ -23,9 +23,9 @@ const uris = {
     }
   },
   pages: {
-    defaults: '/en/zenhack',
-    root: '/:lang/zenhack',
-    photos: '/:lang/zenhack/photos'
+    defaults: '/en',
+    root: '/:lang',
+    photos: '/:lang/photos'
   },
 
   // normalized functions
