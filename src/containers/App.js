@@ -16,12 +16,12 @@ export default class App extends Component {
     router: PropTypes.object,
     children: PropTypes.object,
     dispatch: PropTypes.func.isRequired,
-    params: PropTypes.object.isRequired
+    params: PropTypes.object.isRequired,
   };
 
   static childContextTypes = {
     fetcher: PropTypes.object.isRequired,
-    lang: PropTypes.string.isRequired
+    lang: PropTypes.string.isRequired,
   };
 
   getChildContext() {

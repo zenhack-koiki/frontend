@@ -4,6 +4,7 @@ export default class Signature extends Component {
   static propTypes = {
     lead: PropTypes.string.isRequired,
     sublead: PropTypes.string.isRequired,
+    button: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
   };
@@ -12,6 +13,7 @@ export default class Signature extends Component {
     const {
       lead,
       sublead,
+      button,
       image,
       onClick
     } = this.props;
@@ -34,7 +36,7 @@ export default class Signature extends Component {
                 onClick();
               }
             }>
-          >Search near place</a>
+          {button}</a>
       	</div>
       </header>
     );

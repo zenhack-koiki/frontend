@@ -8,9 +8,7 @@ import {
 } from 'components';
 
 @connect(
-  (state)=>({
-    fruits: state.fruits.items
-  }),
+  state=>state,
   {
     push
   }
@@ -32,6 +30,7 @@ export default class Home extends Component {
         <Signature
           lead="YOUR PLACE"
           sublead="- find your memorable place -"
+          button="Search near place"
           image={require('../images/signature.png')}
           onClick={
             () => {
