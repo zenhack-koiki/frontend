@@ -68,7 +68,9 @@ module.exports = {
     // set global vars
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"' + process.env.NODE_ENV + '"'
+        NODE_ENV: '"' + process.env.NODE_ENV + '"',
+        APP_HOST: '"' + process.env.APP_HOST + '"',
+        APP_PORT: '"' + process.env.APP_PORT + '"',
       }
     }),
 
