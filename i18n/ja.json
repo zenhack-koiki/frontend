@@ -1,8 +1,7 @@
 {
   "msg": {
-    "app": {
-      "start": "API名を入力して検索または作成",
-      "create": "エンターを押すと、APIを作成します"
-    }
+    "lead": "YOUR PLACE",
+    "sublead": "- find your memorable place -",
+    "startSearch": "> Search near place"
   }
 }

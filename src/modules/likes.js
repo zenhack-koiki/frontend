@@ -1,7 +1,7 @@
 
-const LOAD_START = 'fruits/LOAD_START';
-const LOAD_SUCCESS = 'fruits/LOAD_SUCCESS';
-const LOAD_FAIL = 'fruits/LOAD_FAIL';
+const POST_START = 'likes/POST_START';
+const POST_SUCCESS = 'likes/POST_SUCCESS';
+const POST_FAIL = 'likes/POST_FAIL';
 
 const initialState = {
   items: [],
@@ -9,12 +9,12 @@ const initialState = {
 };
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case LOAD_START:
+    case POST_START:
       return {
         ...state,
         loading: true
       };
-    case LOAD_SUCCESS:
+    case POST_SUCCESS:
       const items = action.res.items;
       return {
         ...state,
@@ -24,7 +24,7 @@ export default function reducer(state = initialState, action = {}) {
         candidate: items.length ? items[0].id : '',
         index: 0
       };
-    case LOAD_FAIL:
+    case POST_FAIL:
       return {
         ...state,
         loading: false,

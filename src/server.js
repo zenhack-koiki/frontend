@@ -35,6 +35,27 @@ recursive( __dirname + '/../i18n', (err, files) => {
   });
 });
 
+app.use('/apis/*', (req, res) => {
+  const base = ( config.api.port === 443 ? 'https' : 'http' ) +
+               '://' +
+               config.api.host +
+               ( config.api.port === 80 || config.api.port === 443
+                 ? ''
+                 : ':' + config.api.port);
+  console.log('# proxing', base + req.originalUrl);
+  fetch(base + req.originalUrl, req)
+  .then(
+    _res => _res
+              .json()
+              .then(
+                json => res.json(json),
+                _err => res.json(_err)
+              ),
+    _err => res
+              .json(_err)
+  );
+});
+
 server({
   app,
   uris: {
@@ -57,6 +78,7 @@ server({
 app.get('/', (req, res)=>{
   res.redirect(uris.pages.defaults);
 });
+
 
 if (config.port) {
 

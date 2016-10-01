@@ -49,9 +49,6 @@ export default class Html extends Component {
           )}
         </head>
         <Body assets={assets} content={content} store={store} />
-        <footer className="footer">
-        	© koiki
-        </footer>
       </html>
     );
   }

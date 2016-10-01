@@ -1,8 +1,7 @@
 {
   "msg": {
-    "app": {
-      "start": "Type to Find or Create API",
-      "create": "Press enter to create API"
-    }
+    "lead": "YOUR PLACE",
+    "sublead": "- find your memorable place -",
+    "startSearch": "> Search near place"
   }
 }

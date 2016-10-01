@@ -1,5 +1,9 @@
-import fruits from './fruits';
+import images from './images';
+import likes from './likes';
+import sessions from './sessions';
 
 export default {
-  fruits
+  images,
+  likes,
+  sessions
 };
