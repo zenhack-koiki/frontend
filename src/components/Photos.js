@@ -29,7 +29,7 @@ export default class Photos extends Component {
         className: 'yay'
       });
       onLike({
-        image_id: image.id
+        image_id: String(image.id)
       });
     };
 
@@ -39,7 +39,7 @@ export default class Photos extends Component {
         className: 'nope'
       });
       onDislike({
-        image_id: image.id
+        image_id: String(image.id)
       });
     };
     const up = () => {

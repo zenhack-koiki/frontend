@@ -2,28 +2,30 @@ import React, {Component, PropTypes} from 'react';
 
 export default class Spots extends Component {
   static propTypes = {
-    results: PropTypes.array.isRequired,
+    recommends: PropTypes.array.isRequired,
   };
 
   render() {
+    const {recommends} = this.props;
 
     return (
       <section className="article" id="article">
       	<div className="gridmaster-result">
-      		<div className="grid-result">
-        		<a href="./article-streamer-coffee.html">
-        			<p className="article1">
-                  Cafe<br />
-                  <span className="article-title">0.4km</span>
-                  <br />
-                  Kamakura<br />
-              </p>
-        			<img src="/images/tumbnail-streamer.jpg " />
-        			<p className="go-to-article">
-                <i className="fa fa-arrow-circle-right" aria-hidden="true"></i> MAP
-              </p>
-        		</a>
-          </div>
+          {recommends.map(item =>
+            <div className="grid-result">
+              <a href={'https://www.google.co.jp/maps/place/' + document.encodeURIComponent(item.spot) + '/@' + item.latitude + ',' + item.longitude + ',17z/'} >
+                <p className="article1">
+                    <span className="article-title">{item.distance}km</span>
+                    <br />
+                    {item.spot}<br />
+                </p>
+                <img src={item.image_url} />
+                <p className="go-to-article">
+                  <i className="fa fa-arrow-circle-right" aria-hidden="true"></i> MAP
+                </p>
+              </a>
+            </div>
+          )}
     		</div>
       </section>
     );
