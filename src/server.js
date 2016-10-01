@@ -13,6 +13,7 @@ import routes from './routes';
 import bodyParser from 'body-parser';
 import modules from './modules';
 import PrettyError from 'pretty-error';
+import 'isomorphic-fetch';
 
 const i18n = {};
 const app = new Express();
@@ -42,18 +43,20 @@ app.use('/apis/*', (req, res) => {
                ( config.api.port === 80 || config.api.port === 443
                  ? ''
                  : ':' + config.api.port);
-  console.log('# proxing', base + req.originalUrl);
+  console.log('# proxing', base + req.originalUrl, req.body);
   fetch(base + req.originalUrl, req)
-  .then(
-    _res => _res
-              .json()
-              .then(
-                json => res.json(json),
-                _err => res.json(_err)
-              ),
-    _err => res
-              .json(_err)
-  );
+    .then(
+      _res => _res
+                .json()
+                .then(
+                  json => res.json(json),
+                  _err => res.json(_err)
+                ),
+      _err => res
+                .json(_err)
+    ).catch(
+      err => res.json(err)
+    );
 });
 
 server({
