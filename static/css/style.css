@@ -78,6 +78,22 @@ img {
 	padding: 10px;
 }
 
+.message .like{
+	position: fixed;
+  bottom: 40%;
+	font-size: 4.4rem;
+  right: 10px;
+	color: #45b035;
+}
+
+.message .none{
+	position: fixed;
+  bottom: 40%;
+	font-size: 4.4rem;
+  left: 10px;
+	color: #c25152;
+}
+
 nav {
 	position: fixed;
 	text-align: right;
@@ -222,21 +238,47 @@ nav .humberger .rentagle3.rentagleClick3 {
 }
 
 /* grid */
-.gridmaster {
+/* ****************
+ * Grid
+ * *************** */
+
+ .gridmaster {
   display: table;
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 20px;
 }
 
 .grid {
   display: table-cell;
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.grid .title {
+  color: #C11920;
+  font-size: 1.8rem;
+  padding: 8px;
+  margin: 0 auto;
+}
+
+/* grid */
+.gridmaster-result {
+  display: table;
+  width: 100%;
+}
+
+.grid-result {
+  display: table-cell;
   width: 33.3%;
   padding: 0;
   position: relative;
-	visibility:hidden;
+	/*visibility:hidden;*/
 	overflow: hidden;
 }
 
-.grid p {
+.grid-result p {
 	position: absolute;
 	top: 70%;
 	left: 5%;
@@ -245,7 +287,7 @@ nav .humberger .rentagle3.rentagleClick3 {
 	z-index: 10;
 }
 
-.grid .article1 {
+.grid-result .article1 {
 	position: absolute;
 	top: 2%;
 	right: 2%;
@@ -253,14 +295,14 @@ nav .humberger .rentagle3.rentagleClick3 {
 	font-size: 1.8rem;
 }
 
-.grid .article2 {
+.grid-result .article2 {
 	top: 2%;
 	right: 2%;
 	text-align: right;
 	font-size: 1.8rem;
 }
 
-.grid .article3 {
+.grid-result .article3 {
 	position: absolute;
 	top: 2%;
 	left: 2%;
@@ -268,16 +310,16 @@ nav .humberger .rentagle3.rentagleClick3 {
 	font-size: 1.8rem;
 }
 
-.grid .go-to-article {
+.grid-result .go-to-article {
 	display: none;
 }
 
-.grid .article-title{
+.grid-result .article-title{
 	font-size: 2.8rem;
 	font-family: 'Graduate', cursive;
 }
 
-.grid img {
+.grid-result img {
 	width: 100%;
 	filter:brightness(60%);
 	-webkit-filter: brightness(60%);
@@ -285,7 +327,7 @@ nav .humberger .rentagle3.rentagleClick3 {
 	transition: 0.3s;
 }
 
-.grid a:hover img {
+.grid-result a:hover img {
 	opacity: 0.8;
 	transform: scale(1.1);
 	-webkit-transform: scale(1.1);
@@ -294,10 +336,92 @@ nav .humberger .rentagle3.rentagleClick3 {
   -ms-transform: scale(1.1);
 }
 
-.grid a::after {
+.grid-result a::after {
 	display: none;
 }
+/* ****************
+ * Hr
+ * *************** */
+ hr.fancy-line {
+  border: 0;
+  height: 0;
+  margin: 0px auto 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(193, 25, 32, 1);
+}
 
+/* ****************
+ * Item
+ * *************** */
+.item {
+  position: relative;
+  height: 50px;
+}
+
+.item.new:after {
+  position: absolute;
+  top: 25%;
+  right: 20px;
+  content: "DETAIL";
+  background: #C11920;
+  color: #fff;
+  padding: 5px 10px 3px;
+  border-radius: 3px;
+}
+
+.item.gray {
+  background: #efefef;
+}
+
+.item .thumbnail {
+  position: absolute;
+  top:10%;
+  left:5%;
+  height: 80%;
+}
+
+.item .name {
+  position: relative;
+  top: 10%;
+  font-size: 1.8rem;
+  white-space: nowrap;
+}
+
+.item .name .like-info {
+  margin-top: 0px;
+  margin-bottom: 2px;
+  font-size: 1.4rem;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
+  width: 140px;
+	color: #666666;
+  text-decoration: none;
+	display: inline;
+}
+
+.item .name .department{
+  /*position: absolute;*/
+  top: 20px;
+  font-size: 0.9rem;
+  color: #9FA0A0;
+}
+
+.item > a {
+  position: absolute;
+  width:100%;
+  height:100%;
+  display: block;
+  border-radius: 5px;
+  color: #777;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.item > a:hover {
+  box-shadow: 0 0 6px -1px rgba(0,0,0,0.3);
+  opacity: 0.8;
+}
 .hometown {
 	padding: 80px 30px;
 }
@@ -485,21 +609,50 @@ nav .humberger .rentagle3.rentagleClick3 {
 	.description {
 		line-height: 1.8;
 	}
-	.gridmaster {
-    display: block;
-  }
-  .grid {
-  	width: 100%;
-    display: block;
-    padding: 0px;
-  }
-	.grid .go-to-article {
-		position: absolute;
-		display: block;
-		top: 80%;
-		right: 2%;
-		text-align: right;
-		font-size: 3.8rem;
+	/* css for smartphone */
+	@media (max-width: 768px) {
+	  .gridmaster {
+	    display: block;
+	  }
+	  .grid {
+	    display: block;
+	    margin-top: 20px;
+	    padding-left: 0px;
+	    padding-right: 0px;
+	  }
+		.gridmaster-result {
+	    display: block;
+	  }
+	  .grid-result {
+	  	width: 100%;
+	    display: block;
+	    padding: 0px;
+	  }
+		.grid-result .go-to-article {
+			position: absolute;
+			display: block;
+			top: 80%;
+			right: 2%;
+			text-align: right;
+			font-size: 3.8rem;
+		}
+	  .filter-conditon {
+	    display: inline-block;
+	    margin-top: 20px;
+	  }
+	  #search-area {
+	    display: block;
+	  }
+	  .item.new:after {
+	    display: block;
+	    border-radius: 0px;
+	  }
+	  .item .name {
+	    font-size: 2.0rem;
+	  }
+	  .item .name p {
+	    width: 340px;
+	  }
 	}
 	.favorites-wrapper,
 	.favorite-box {
@@ -517,4 +670,5 @@ nav .humberger .rentagle3.rentagleClick3 {
 	.favorite-text {
 		margin: 0;
 	}
+
 }

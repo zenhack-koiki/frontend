@@ -87,6 +87,16 @@ nav .humberger .rentagle2 {
 	background-color: #656765; /* NIBI */
 }
 
+.grid-result .article1,
+.grid-result .article2,
+.grid-result .go-to-article {
+	color: #FFFFFB; /* GOFUN */
+}
+
+.grid-result .article3 {
+	color: #656765; /* NIBI */
+}
+
 @media (max-width: 768px) {
 	nav.opened {
     background: #FFFFFB; /* GOFUN */

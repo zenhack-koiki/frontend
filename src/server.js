@@ -44,7 +44,7 @@ app.use('/apis/*', (req, res) => {
                  ? ''
                  : ':' + config.api.port);
   console.log('# proxing', base + req.originalUrl, req.body);
-  fetch(base + req.originalUrl, req)
+  fetch(base + (req.originalUrl.replace(/^\/apis/, '')), req)
     .then(
       _res => _res
                 .json()
