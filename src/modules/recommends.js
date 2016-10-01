@@ -1,4 +1,4 @@
-
+import geolib from 'geolib';
 const LOAD_START = 'recommends/LOAD_START';
 const LOAD_SUCCESS = 'recommends/LOAD_SUCCESS';
 const LOAD_FAIL = 'recommends/LOAD_FAIL';
@@ -16,7 +16,12 @@ export default function reducer(state = initialState, action = {}) {
         loading: true
       };
     case LOAD_SUCCESS:
-      const items = action.res;
+      const items = action.res.map(item =>{
+        return {
+          ...item,
+          distance: geolib.getDistance(item, action.values)
+        };
+      });
       return {
         ...state,
         loading: false,
