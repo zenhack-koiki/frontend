@@ -4,44 +4,69 @@ import Swipeable from 'react-swipeable';
 export default class Photos extends Component {
   static propTypes = {
     images: PropTypes.array.isRequired,
-    index: PropTypes.number.isRequired,
     onLike: PropTypes.func.isRequired,
     onDislike: PropTypes.func.isRequired
+  };
+  state = {
+    index: 0
   };
 
   render() {
     const {
       images,
-      index,
       onLike,
       onDislike
     } = this.props;
+    const {
+      index
+    } = this.state;
+
+    const right = image => {
+      this.setState({
+        index: this.state.index + 1,
+        className: 'yay'
+      });
+      onLike({
+        image_id: image.id
+      });
+    };
+
+    const left = image => {
+      this.setState({
+        index: this.state.index + 1,
+        className: 'nope'
+      });
+      onDislike({
+        image_id: image.id
+      });
+    };
     const styles = require('../css/photos.less');
+    console.log(images);
 
     return (
-      <div className={styles.photos} >
+      <div className={styles.container} >
         {
-          images.map((image, _index) =>
-            index < _index ?
+          images.map((image, _index) => console.log(image.url) ||
+            index - 1 <= _index ?
               <Swipeable
                 key={image.id}
                 onSwipedLeft={
-                  () => onLike({
-                    image_id: image.id,
-                    session_id: new Date().getTime()
-                  })
+                  () => left(image)
                 }
                 onSwipedRight={
-                  () => onDislike({
-                    image_id: image.id,
-                    session_id: new Date().getTime()
-                  })
+                  () => right(image)
                 }
-              >
-                <img
-                  src={image.url}
-                />
-              </Swipeable> : ''
+                className={
+                  'flick ' +
+                  styles.flick + ' ' +
+                  (index - 1 === _index ? styles[this.state.className] : '') + ' ' +
+                  (_index === 0 ? styles.first : '' )
+                }
+                style={{
+                  backgroundImage: 'url(' + image.url + ')',
+                  zIndex: images.length - _index
+                }}
+              /> : ''
           )
         }
       </div>

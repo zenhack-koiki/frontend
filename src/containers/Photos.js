@@ -1,13 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {
+  Footer,
   Photos as PhotosComponent
 } from 'components';
 
 @connect(
   (state)=>({
     images: state.images.items,
-    index: state.images.index,
     session: state.sessions.id
   }),
   (/*dispatch*/) => ({
@@ -19,9 +19,8 @@ import {
 export default class Photos extends Component {
   static propTypes = {
     images: PropTypes.array.isRequired,
-    index: PropTypes.number.isRequired,
     select: PropTypes.func.isRequired,
-    session: PropTypes.number.isRequired
+    session: PropTypes.string.isRequired
   };
 
   static contextTypes = {
@@ -33,23 +32,15 @@ export default class Photos extends Component {
     const {fetcher} = this.context;
     const {
       images,
-      index,
       select,
       session
     } = this.props;
-    console.log(images, index);
+    console.log(images);
+
     return (
       <div>
         <PhotosComponent
-          images={[{
-            id: 1,
-            url: 'https://zenhack.herokuapp.com/dist/2952985136c354e0b5174a321731e1d1.png'
-          },
-          {
-            id: 2,
-            url: 'https://zenhack.herokuapp.com/dist/2952985136c354e0b5174a321731e1d1.png'
-          }]}
-          index={index}
+          images={images}
           onLike={
             values => select(
               fetcher,
@@ -71,6 +62,7 @@ export default class Photos extends Component {
             )
           }
         />
+        <Footer />
       </div>
     );
   }

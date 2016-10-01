@@ -22,7 +22,7 @@ a {
 	display: inline-block;
 }
 
-a::after {
+/*a::after {
 	position: absolute;
 	bottom: .3em;
 	right: 0;
@@ -31,12 +31,7 @@ a::after {
 	height: 2px;
 	opacity: 0;
 	transition: .3s;
-}
-
-a:hover::after {
-	bottom: 2px;
-	opacity: 1;
-}
+}*/
 
 ol, ul {
   list-style: none;
@@ -47,17 +42,40 @@ ol, ul {
 	position: fixed;
   top: 0;
   left: 0;
-  margin: 20px;
-  padding: 2.8rem 2.8rem;
+	width: 100vw;
   z-index: 101;
+	background-color: #ffffff;
+}
+
+.logo img {
+    width: 320px;
+    margin: 0 auto;
+}
+
+img {
+    border: 0;
 }
 
 .logo a {
 	width: 200px;
   height: 40px;
   display: block;
-  background-image: none, url("../images/tokyo-logo-s.png");
+  background-image: none, url("../images/urplace.png");
   background-size: cover;
+}
+
+.place {
+	position: fixed;
+  bottom: 0;
+  left: 0;
+	width: 100vw;
+  z-index: 101;
+	background-color: #ffffff;
+	font-size: 2.0rem;
+}
+
+.place p {
+	padding: 10px;
 }
 
 nav {
@@ -150,6 +168,20 @@ nav .humberger .rentagle3.rentagleClick3 {
 	min-height: 360px;
 	background-image: url(../images/test.gif);
   background-size: cover;
+	background-position: center;
+	width: 100vw;
+  height: 100vh;
+}
+
+/* flick */
+.flick {
+	padding: 80px 30px 380px;
+	min-height: 360px;
+	background-image: url(../images/test.gif);
+  background-size: cover;
+	background-position: center;
+	width: 100vw;
+  height: 100vh;
 }
 
 .site-title {
