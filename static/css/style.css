@@ -1,0 +1,488 @@
+@charset "UTF-8";
+
+html {
+	font-size: 62.5%;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	text-align: center;
+	font-size: 1.8rem;
+	font-family: 'Telex', "Hiragino Kaku Gothic ProN", Meiryo, san-serif;
+}
+
+a {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-decoration: none;
+	position: relative;
+	display: inline-block;
+}
+
+a::after {
+	position: absolute;
+	bottom: .3em;
+	right: 0;
+	content: '';
+	width: 100%;
+	height: 2px;
+	opacity: 0;
+	transition: .3s;
+}
+
+a:hover::after {
+	bottom: 2px;
+	opacity: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+/* logo part */
+.logo {
+	position: fixed;
+  top: 0;
+  left: 0;
+  margin: 20px;
+  padding: 2.8rem 2.8rem;
+  z-index: 101;
+}
+
+.logo a {
+	width: 200px;
+  height: 40px;
+  display: block;
+  background-image: none, url("../images/tokyo-logo-s.png");
+  background-size: cover;
+}
+
+nav {
+	position: fixed;
+	text-align: right;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  padding-right: 3.4rem;
+  padding-top: 2.6rem;
+  z-index: 100;
+}
+
+nav ul {
+	margin-top: 15px;
+	display: none;
+  opacity: 0;
+}
+
+nav.opened ul {
+	display: block;
+	opacity: 1;
+}
+
+nav li a {
+  display: block;
+  padding: 5px 30px 0px 30px;
+  font-size: 17px;
+  line-height: 2.2;
+  text-align: right;
+  font-size: 2.0rem;
+}
+
+nav .humberger {
+	width: 40px;
+  height: 40px;
+  padding-top: 10px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+nav .humberger .rentagle1,
+nav .humberger .rentagle2,
+nav .humberger .rentagle3
+ {
+	display: block;
+  width: 40px;
+  height: 4px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: absolute;
+}
+
+nav .humberger .rentagle2 {
+	top: 20px;
+	left: 10px;
+	width: 20px;
+}
+
+nav .humberger .rentagle3 {
+	top: 30px;
+	left: 10px;
+	width: 20px;
+}
+
+nav .humberger .rentagle1.rentagleClick1 {
+		top: 20px;
+    -o-transform: rotate(405deg);
+    -moz-transform: rotate(405deg);
+    -webkit-transform: rotate(405deg);
+    -ms-transform: rotate(405deg);
+    transform: rotate(405deg);
+}
+nav .humberger .rentagle2.rentagleClick2 {
+    opacity: 0;
+}
+nav .humberger .rentagle3.rentagleClick3 {
+		top: 20px;
+    -o-transform: rotate(-405deg);
+    -moz-transform: rotate(-405deg);
+    -webkit-transform: rotate(-405deg);
+    -ms-transform: rotate(-405deg);
+    transform: rotate(-405deg);
+}
+
+/* header */
+.header {
+	padding: 80px 30px 380px;
+	min-height: 360px;
+	background-image: url(../images/test.gif);
+  background-size: cover;
+}
+
+.site-title {
+	margin: 100px 0 40px;
+	font-size: 3.2rem;
+}
+
+.site-description {
+	margin-bottom: 50px;
+}
+
+.buttons .button {
+  margin: 10px;
+}
+
+.button {
+	display: inline-block;
+	width: 200px;
+	padding: 20px;
+	border-radius: 4px;
+	color: #fff;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size: 1.2rem;
+}
+
+.button:hover {
+	opacity: 0.9;
+}
+
+/* about */
+.about {
+	padding: 80px 30px;
+}
+
+.sns {
+	padding: 30px;
+}
+
+/* grid */
+.gridmaster {
+  display: table;
+  width: 100%;
+}
+
+.grid {
+  display: table-cell;
+  width: 33.3%;
+  padding: 0;
+  position: relative;
+	visibility:hidden;
+	overflow: hidden;
+}
+
+.grid p {
+	position: absolute;
+	top: 70%;
+	left: 5%;
+	margin: 0;
+	font-size: 2.0rem;
+	z-index: 10;
+}
+
+.grid .article1 {
+	position: absolute;
+	top: 2%;
+	right: 2%;
+	text-align: right;
+	font-size: 1.8rem;
+}
+
+.grid .article2 {
+	top: 2%;
+	right: 2%;
+	text-align: right;
+	font-size: 1.8rem;
+}
+
+.grid .article3 {
+	position: absolute;
+	top: 2%;
+	left: 2%;
+	text-align: left;
+	font-size: 1.8rem;
+}
+
+.grid .go-to-article {
+	display: none;
+}
+
+.grid .article-title{
+	font-size: 2.8rem;
+	font-family: 'Graduate', cursive;
+}
+
+.grid img {
+	width: 100%;
+	filter:brightness(60%);
+	-webkit-filter: brightness(60%);
+	vertical-align:bottom;
+	transition: 0.3s;
+}
+
+.grid a:hover img {
+	opacity: 0.8;
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+}
+
+.grid a::after {
+	display: none;
+}
+
+.hometown {
+	padding: 80px 30px;
+}
+
+.hometown-map {
+	width: 100%;
+}
+
+.heading {
+	position: relative;
+	display: inline-block;
+	margin: 30px 0 15px;
+	padding-bottom: 15px;
+	letter-spacing: 2px;
+	font-size: 4rem;
+}
+
+.heading::before,
+.heading::after {
+	content: '';
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-bottom:1px solid #999;
+}
+
+.heading::before {
+	bottom: 5px;
+}
+
+.about-text,
+.description {
+	margin: 30px 200px;
+	line-height: 1.7;
+	text-align: left;
+	font-family: 'Metrophobic', sans-serif;
+}
+
+/* favorites */
+.favorites {
+	padding: 80px 0;
+}
+
+.favorites-wrapper {
+	display: table;
+	width: 80%;
+	margin: 50px auto 0;
+	table-layout: fixed;
+}
+
+.favorite-box {
+	display: table-cell;
+}
+
+.favolite-icon {
+	width: 150px;
+	height: 150px;
+	margin-bottom: 30px;
+	font-size: 8rem;
+	line-height: 142px; /* 150px-4px*2 */
+}
+
+.favorite-title {
+	margin: 0 20px 20px;
+	font-size: 2rem;
+}
+
+.favorite-text {
+	margin: 0 20px;
+	line-height: 2;
+}
+
+/* Google Map */
+.map-embed
+{
+	max-width: 100% ;
+	height: 0 ;
+	margin: 0 ;
+	padding: 0 0 56.25% ;
+	overflow: hidden ;
+	position: relative ;
+	top: 0 ;
+	left: 0 ;
+}
+
+.map-embed > div
+{
+	position: absolute ;
+	top: 0 ;
+	left: 0 ;
+	width: 100% ;
+	height: 100% ;
+	margin: 0 ;
+	padding: 0 ;
+}
+
+.map-embed img
+{
+	max-width: none ;
+}
+
+/* footer */
+.footer {
+	padding: 12px 0;
+	font-size: 1.3rem;
+}
+
+/* for tablet */
+@media (max-width: 1024px) {
+	body {
+	background-image:none;
+	}
+}
+
+/* for smartphone */
+@media (max-width: 768px) {
+	.logo {
+	  padding: 0.6rem 0.6rem;
+	}
+	nav {
+	  padding-right: 0.6rem;
+	  padding-top: 0.2rem;
+	}
+	nav.opened {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    top: 0;
+    left: 0;
+    padding:0;
+    -webkit-transition: none;
+    transition: none;
+  }
+	nav.opened ul {
+	    display: block;
+	    margin-top: 32px;
+    padding: 5px;
+	}
+	nav.opened ul li a {
+	    font-size: 2.4rem;
+	    text-align: center;
+	    display: block;
+	    padding: 10.66667px 0 6.4px;
+	}
+	nav.opened .humberger {
+		margin: 20px;
+	}
+	.about-text,
+	.description {
+		margin: 30px 0;
+		line-height: 2.5;
+	}
+	.site-title-sub::before{
+		display: block;
+		width: 80%;
+		margin: 10px auto;
+	}
+	.site-title-sub::after{
+		display: block;
+		width: 80%;
+		margin: 10px auto;
+	}
+	.site-title-sub {
+		font-size: 1.7rem;
+	}
+	.site-title {
+		margin-top: 80px;
+		font-size: 3.2rem;
+	}
+	.header {
+		padding-top: 60px;
+	}
+	.button:hover {
+		opacity: 1;
+	}
+	/* about */
+	.heading {
+		font-size: 2.5rem;
+	}
+	body {
+		font-size: 1.6rem;
+	}
+	.about-text,
+	.description {
+		line-height: 1.8;
+	}
+	.gridmaster {
+    display: block;
+  }
+  .grid {
+  	width: 100%;
+    display: block;
+    padding: 0px;
+  }
+	.grid .go-to-article {
+		position: absolute;
+		display: block;
+		top: 80%;
+		right: 2%;
+		text-align: right;
+		font-size: 3.8rem;
+	}
+	.favorites-wrapper,
+	.favorite-box {
+		display: block;
+	}
+	.favorite-icon {
+		width: 100px;
+		height: 100px;
+		font-size: 5rem;
+		line-height: 92px;
+	}
+	.favorite-box {
+		margin: 40px auto;
+	}
+	.favorite-text {
+		margin: 0;
+	}
+}
