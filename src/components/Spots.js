@@ -7,9 +7,10 @@ export default class Spots extends Component {
 
   render() {
     const {recommends} = this.props;
+    const styles = require('../css/spots.less');
 
     return (
-      <section className="article" id="article">
+      <section className={'article ' + styles.spots} id="article">
       	<div className="gridmaster-result">
           {recommends.map(item =>
             <div className="grid-result">

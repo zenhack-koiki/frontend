@@ -31,6 +31,9 @@ export default class Photos extends Component {
       onLike({
         image_id: String(image.id)
       });
+      if ( this.state.index + 1 === images.length ) {
+        onFinish();
+      }
     };
 
     const left = image => {
@@ -41,12 +44,15 @@ export default class Photos extends Component {
       onDislike({
         image_id: String(image.id)
       });
+      if ( this.state.index + 1 === images.length ) {
+        onFinish();
+      }
+
     };
     const up = () => {
       onFinish();
     };
     const styles = require('../css/photos.less');
-    console.log(images);
 
     return (
       <div className={styles.container} >
