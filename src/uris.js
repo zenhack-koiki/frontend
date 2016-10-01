@@ -9,19 +9,23 @@ const base = ( config.api.port === 443 ? 'https' : 'http' ) +
 const uris = {
   base,
   resources: {
-    fruits: {
+    images: {
       load: {
-        url: base + '/apis/zenhack/fruits',
-        method: 'GET',
-        defaults: {
-          limit: 1000
-        }
+        url: base + '/apis/zenhack/images',
+        method: 'GET'
+      }
+    },
+    likes: {
+      select: {
+        url: base + '/apis/zenhack/likes',
+        method: 'POST'
       }
     }
   },
   pages: {
     defaults: '/en/zenhack',
-    root: '/:lang/zenhack'
+    root: '/:lang/zenhack',
+    photos: '/:lang/zenhack/photos'
   },
 
   // normalized functions

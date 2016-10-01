@@ -15,11 +15,13 @@ export default class App extends Component {
     route: PropTypes.object.isRequired,
     router: PropTypes.object,
     children: PropTypes.object,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    params: PropTypes.object.isRequired
   };
 
   static childContextTypes = {
-    fetcher: PropTypes.object.isRequired
+    fetcher: PropTypes.object.isRequired,
+    lang: PropTypes.string.isRequired
   };
 
   getChildContext() {
@@ -33,7 +35,8 @@ export default class App extends Component {
           origin: uris.base,
           referer: uris.base
         } : undefined)
-      })
+      }),
+      lang: this.props.params.lang
     };
   }
 
