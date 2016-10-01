@@ -43,19 +43,24 @@ app.use('/apis/*', (req, res) => {
                ( config.api.port === 80 || config.api.port === 443
                  ? ''
                  : ':' + config.api.port);
-  console.log('# proxing', base + req.originalUrl, req.body);
-  fetch(base + (req.originalUrl.replace(/^\/apis/, '')), req)
+  const url = base + (req.originalUrl.replace(/^\/apis/, ''));
+  console.log('# proxing', url, req.method, req.body);
+  fetch(
+    url,
+    {
+      ...req,
+      body: req.method === 'POST' ? JSON.stringify(req.body) : ''
+    })
     .then(
       _res => _res
                 .json()
                 .then(
-                  json => res.json(json),
-                  _err => res.json(_err)
+                  json => console.log(json) || res.json(json),
+                  _err => console.log(_err) || res.json(_err)
                 ),
-      _err => res
-                .json(_err)
+      _err => console.log(_err) || res.json(_err)
     ).catch(
-      err => res.json(err)
+      err => console.log(err) || res.json(err)
     );
 });
 
