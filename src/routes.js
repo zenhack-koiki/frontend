@@ -5,6 +5,7 @@ import {
     App,
     Home,
     Photos,
+    Recommends,
     NotFound
   } from 'containers';
 
@@ -17,6 +18,7 @@ export default () => {
       <IndexRoute component={Home} />
       { /* Catch all route */ }
       <Route path={uris.pages.photos} component={Photos} status={404} />
+      <Route path={uris.pages.recommends} component={Recommends} status={404} />
       <Route path="*" component={NotFound} status={404} />
     </Route>
   );

@@ -2,18 +2,21 @@ import React, {Component, PropTypes} from 'react';
 import uris from '../uris';
 import {connect} from 'react-redux';
 import { push } from 'react-router-redux';
+import { set } from '../modules/location';
 import {
   Signature
 } from 'components';
 
 @connect(
   state=>state,
-  {
-    push
-  }
+  dispatch => ({
+    setLocation: (coords) => dispatch(set(coords)),
+    push: (url) => dispatch(push(url))
+  })
 )
 export default class Home extends Component {
   static propTypes = {
+    setLocation: PropTypes.func.isRequired,
     push: PropTypes.func.isRequired
   };
 
@@ -42,7 +45,10 @@ export default class Home extends Component {
                     longitude: pos.coords.longitude
                   })
                   .then(
-                    () => this.props.push(uris.normalize( uris.pages.photos, {lang} ))
+                    () => {
+                      this.props.setLocation(pos.coords);
+                      this.props.push(uris.normalize( uris.pages.photos, {lang} ));
+                    }
                   );
               },
               err => console.log(err));

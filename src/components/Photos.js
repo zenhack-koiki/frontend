@@ -5,7 +5,8 @@ export default class Photos extends Component {
   static propTypes = {
     images: PropTypes.array.isRequired,
     onLike: PropTypes.func.isRequired,
-    onDislike: PropTypes.func.isRequired
+    onDislike: PropTypes.func.isRequired,
+    onFinish: PropTypes.func.isRequired
   };
   state = {
     index: 0
@@ -15,7 +16,8 @@ export default class Photos extends Component {
     const {
       images,
       onLike,
-      onDislike
+      onDislike,
+      onFinish
     } = this.props;
     const {
       index
@@ -40,33 +42,45 @@ export default class Photos extends Component {
         image_id: image.id
       });
     };
+    const up = () => {
+      onFinish();
+    };
     const styles = require('../css/photos.less');
     console.log(images);
 
     return (
       <div className={styles.container} >
         {
-          images.map((image, _index) => console.log(image.url) ||
-            index - 1 <= _index ?
-              <Swipeable
-                key={image.id}
-                onSwipedLeft={
-                  () => left(image)
-                }
-                onSwipedRight={
-                  () => right(image)
-                }
-                className={
-                  'flick ' +
-                  styles.flick + ' ' +
-                  (index - 1 === _index ? styles[this.state.className] : '') + ' ' +
-                  (_index === 0 ? styles.first : '' )
-                }
-                style={{
-                  backgroundImage: 'url(' + image.url + ')',
-                  zIndex: images.length - _index
-                }}
-              /> : ''
+          images.filter((image, _index) => index - 1 <= _index)
+                .map((image, _index) => {
+                  if ( _index === 0 ) {
+                    image.first = true;
+                  }
+                  return image;
+                })
+                .map((image, _index) =>
+                  <Swipeable
+                    key={image.id}
+                    onSwipedLeft={
+                      () => left(image)
+                    }
+                    onSwipedRight={
+                      () => right(image)
+                    }
+                    onSwipedUp={
+                      () => up()
+                    }
+                    className={
+                      'flick ' +
+                      styles.flick + ' ' +
+                      (_index === 0 ? styles[this.state.className] : '') + ' ' +
+                      (image.first ? styles.first : '' )
+                    }
+                    style={{
+                      backgroundImage: 'url(' + image.url + ')',
+                      zIndex: images.length - _index
+                    }}
+                  />
           )
         }
       </div>

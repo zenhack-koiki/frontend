@@ -7,21 +7,28 @@ const uris = {
   resources: {
     images: {
       load: {
-        url: base + '/apis/zenhack/images',
+        url: base + '/apis/images',
         method: 'GET'
       }
     },
     likes: {
       select: {
-        url: base + '/apis/zenhack/likes',
+        url: base + '/apis/likes',
         method: 'POST'
+      }
+    },
+    recommends: {
+      load: {
+        url: base + '/apis/recommend/index.json',
+        method: 'GET'
       }
     }
   },
   pages: {
     defaults: '/en',
     root: '/:lang',
-    photos: '/:lang/photos'
+    photos: '/:lang/photos',
+    recommends: '/:lang/recommends'
   },
 
   // normalized functions
