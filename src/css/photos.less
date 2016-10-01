@@ -1,4 +1,48 @@
 @import "variables.less";
 
-.photos{
+@keyframes yay {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(40deg) translate(50%, -20%);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(40deg) translate(100%, -20%);
+    opacity: 0;
+  }
+}
+
+@keyframes nope {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(-40deg) translate(-50%, -20%);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-40deg) translate(-100%, -20%);
+    opacity: 0;
+  }
+}
+
+.container{
+  position: relative;
+}
+
+.flick{
+  position: absolute;
+}
+
+.flick.yay{
+  animation: yay 0.25s ease-out;
+  transform: translateX(100%);
+}
+.flick.nope{
+  animation: nope 0.25s ease-out;
+  transform: translateX(-100%);
 }

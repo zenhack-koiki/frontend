@@ -56,6 +56,17 @@ nav .humberger .rentagle2 {
 	color: #656765; /* NIBI */
 }
 
+/* flick */
+.flick {
+	color : #080808; /* KURO */
+}
+
+.place p{
+	background-color: #080808;
+	margin: 0px;
+}
+
+
 .about {
 	background-color: rgba(203,64,66,0.2); /* AKABENI 0.2 */
 	color: #080808; /* KURO */

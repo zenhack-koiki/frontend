@@ -3,7 +3,17 @@ import ApiClient from 'promise-apiclient';
 import uris from '../uris';
 import Fetcher from 'redux-fetch-dispatcher';
 import { connect } from 'react-redux';
+import { asyncConnect } from 'redux-connect';
+import { set } from '../modules/sessions';
+import uuid from 'uuid';
 
+@asyncConnect([{
+  promise: ({store: {dispatch}}) => {
+    const promises = [];
+    dispatch(set(uuid.v4()));
+    return Promise.all(promises);
+  }
+}])
 @connect(
   state => state,
   dispatch => ({
