@@ -18,7 +18,7 @@ export default class Spots extends Component {
               className="grid-result">
               <a
                 target="_blank"
-                href={'https://www.google.co.jp/maps/search/' + encodeURIComponent(item.spot || '') + '/@' + item.latitude + ',' + item.longitude + ',17z/'} >
+                href={'https://www.google.co.jp/maps/' + (item.spot ? 'search' : 'place' ) + '/' + encodeURIComponent(item.spot || '') + '/@' + item.latitude + ',' + item.longitude + ',17z/'} >
                 <p className="article1">
                     <span className="article-title">{item.distance}km</span>
                     <br />
