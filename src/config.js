@@ -21,7 +21,7 @@ module.exports = Object.assign({
   },
   app: {
     host: process.env.APP_HOST || 'localhost',
-    port: process.env.APP_PORT || 3000,
+    port: Number( process.env.APP_PORT || 3000 ),
     title: title,
     description: description,
     head: {
