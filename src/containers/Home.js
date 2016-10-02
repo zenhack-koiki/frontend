@@ -2,23 +2,31 @@ import React, {Component, PropTypes} from 'react';
 import uris from '../uris';
 import {connect} from 'react-redux';
 import { push } from 'react-router-redux';
-import { set } from '../modules/location';
+import { load, set } from '../modules/location';
 import {
   Signature,
-  Logo
+  Logo,
+  Loading
 } from 'components';
 
 @connect(
-  state=>state,
+  state=> ({
+    locationLoading: state.location.loading,
+    loading: state.images.loading
+  }),
   dispatch => ({
     setLocation: (coords) => dispatch(set(coords)),
+    load: () => dispatch(load()),
     push: (url) => dispatch(push(url))
   })
 )
 export default class Home extends Component {
   static propTypes = {
     setLocation: PropTypes.func.isRequired,
-    push: PropTypes.func.isRequired
+    push: PropTypes.func.isRequired,
+    load: PropTypes.func.isRequired,
+    locationLoading: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired
   };
 
   static contextTypes = {
@@ -27,6 +35,7 @@ export default class Home extends Component {
   };
 
   render() {
+    const {loading, locationLoading} = this.props;
     const {fetcher, lang} = this.context;
     return (
       <div className="home" >
@@ -35,6 +44,7 @@ export default class Home extends Component {
           button="Search near place"
           onClick={
             () => {
+              this.props.load();
               navigator.geolocation.getCurrentPosition((pos) => {
                 console.log(pos.coords);
                 fetcher
@@ -54,9 +64,12 @@ export default class Home extends Component {
             }
           }
         />
-      <Logo
-        image={require('../images/spot4u.png')}
-      />
+        <Logo
+          image={require('../images/spot4u.png')}
+        />
+        {
+          loading || locationLoading ? <Loading /> : ''
+        }
       </div>
     );
   }

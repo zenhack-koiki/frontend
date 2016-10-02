@@ -1,4 +1,7 @@
 import React, {Component, PropTypes} from 'react';
+import {
+  Loading
+} from 'components';
 import Swipeable from 'react-swipeable';
 
 export default class Photos extends Component {
@@ -6,7 +9,8 @@ export default class Photos extends Component {
     images: PropTypes.array.isRequired,
     onLike: PropTypes.func.isRequired,
     onDislike: PropTypes.func.isRequired,
-    onFinish: PropTypes.func.isRequired
+    onFinish: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired
   };
   state = {
     index: 0
@@ -17,7 +21,8 @@ export default class Photos extends Component {
       images,
       onLike,
       onDislike,
-      onFinish
+      onFinish,
+      loading
     } = this.props;
     const {
       index
@@ -53,6 +58,8 @@ export default class Photos extends Component {
       onFinish();
     };
     const styles = require('../css/photos.less');
+    const leftarrow = require('../images/flick-left.svg');
+    const rightarrow = require('../images/flick-right.svg');
 
     return (
       <div className={styles.container} >
@@ -88,13 +95,22 @@ export default class Photos extends Component {
                     }}
                   >
                     <div className={styles.nopearrow} >
-                      <div className={styles.note}>Nope</div>
+                      <div className={styles.note}>
+                        <img src={leftarrow} /><br />
+                        <span>Nope</span>
+                      </div>
                     </div>
                     <div className={styles.yayarrow} >
-                      <div className={styles.note}>Like</div>
+                      <div className={styles.note}>
+                        <img src={rightarrow} /><br />
+                        <span>Like</span>
+                      </div>
                     </div>
                   </Swipeable>
           )
+        }
+        {
+          loading ? <Loading /> : ''
         }
       </div>
     );

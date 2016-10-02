@@ -18,10 +18,11 @@ export default function reducer(state = initialState, action = {}) {
       };
     case LOAD_SUCCESS:
       const items = action.res.map(item =>{
+        const distance = (geolib.getDistance(item, state) / 1000).toFixed(2);
         return {
           ...state,
           ...item,
-          distance: geolib.getDistance(item, state)
+          distance
         };
       });
       return {

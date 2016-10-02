@@ -12,7 +12,8 @@ import { push } from 'react-router-redux';
   (state)=>({
     images: state.images.items,
     session: state.sessions.id,
-    location: state.location
+    location: state.location,
+    loading: state.recommends.loading
   }),
   dispatch => ({
     select: (fetcher, values) => {
@@ -35,7 +36,8 @@ export default class Photos extends Component {
     select: PropTypes.func.isRequired,
     recommend: PropTypes.func.isRequired,
     session: PropTypes.string.isRequired,
-    location: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired
   };
 
   static contextTypes = {
@@ -51,13 +53,15 @@ export default class Photos extends Component {
       select,
       location,
       recommend,
-      session
+      session,
+      loading
     } = this.props;
     console.log(images);
 
     return (
       <div>
         <PhotosComponent
+          loading={loading}
           images={images}
           onLike={
             values => select(

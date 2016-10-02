@@ -13,7 +13,9 @@ export default class Spots extends Component {
       <section className={'article ' + styles.spots} id="article">
       	<div className="gridmaster-result">
           {recommends.map(item =>
-            <div className="grid-result">
+            <div
+              key={item.spot}
+              className="grid-result">
               <a href={'https://www.google.co.jp/maps/place/' + encodeURIComponent(item.spot) + '/@' + item.latitude + ',' + item.longitude + ',17z/'} >
                 <p className="article1">
                     <span className="article-title">{item.distance}km</span>

@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {
-  Footer,
   Spots
 } from 'components';
 
@@ -24,11 +23,10 @@ export default class Recommend extends Component {
   render() {
     const {recommends} = this.props;
     return (
-      <div>:
+      <div>
         <Spots
           recommends={recommends}
         />
-        <Footer />
       </div>
     );
   }

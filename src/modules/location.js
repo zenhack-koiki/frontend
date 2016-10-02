@@ -1,15 +1,22 @@
-
+const LOADING = 'location/LOCATION';
 const SET = 'location/SET';
 
 const initialState = {
+  loading: false
 };
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
+    case LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
     case SET:
       return {
         ...state,
         latitude: action.latitude,
-        longitude: action.longitude
+        longitude: action.longitude,
+        loading: false
       };
     default:
       return state;
@@ -21,5 +28,11 @@ export function set(coords) {
     type: SET,
     latitude: coords.latitude,
     longitude: coords.longitude
+  };
+}
+
+export function load() {
+  return {
+    type: LOADING
   };
 }

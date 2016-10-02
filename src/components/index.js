@@ -5,3 +5,4 @@ export Header from './Header';
 export Footer from './Footer';
 export Spots from './Spots';
 export Logo from './Logo';
+export Loading from './Loading';
