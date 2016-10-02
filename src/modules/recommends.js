@@ -7,7 +7,8 @@ const SET_LOCATION = 'recommends/SET_LOCATION';
 const initialState = {
   items: [],
   index: 0,
-  loaded: false
+  loaded: false,
+  loading: false
 };
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {

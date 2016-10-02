@@ -9,7 +9,7 @@ import {
     NotFound
   } from 'containers';
 
-export default () => {
+export default store => {
   /**
    * Please keep routes in alphabetical order
    */
@@ -17,8 +17,29 @@ export default () => {
     <Route path={uris.pages.root} component={App} >
       <IndexRoute component={Home} />
       { /* Catch all route */ }
-      <Route path={uris.pages.photos} component={Photos} status={404} />
-      <Route path={uris.pages.recommends} component={Recommends} status={404} />
+      <Route path={uris.pages.photos} component={Photos} onEnter={
+        (next, replace, cb) => {
+          const state = store.getState();
+          if ( !state.images ||
+               !state.images.loaded ) {
+            console.log(state);
+            replace(uris.pages.defaults);
+          }
+          cb();
+        }
+      }/>
+      <Route path={uris.pages.recommends} component={Recommends} onEnter={
+        (next, replace, cb) => {
+          const state = store.getState();
+          if ( !state.recommends ||
+               !state.recommends.loaded ) {
+            replace(uris.pages.defaults);
+          } else {
+            cb();
+          }
+        }
+      }
+      />
       <Route path="*" component={NotFound} status={404} />
     </Route>
   );
