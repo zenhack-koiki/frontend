@@ -9,11 +9,7 @@ import {
   (state)=>({
     recommends: state.recommends.items
   }),
-  (/*dispatch*/) => ({
-    select: (fetcher, values) => {
-      fetcher.likes.select(values);
-    }
-  })
+  {}
 )
 export default class Recommend extends Component {
   static propTypes = {
@@ -28,7 +24,7 @@ export default class Recommend extends Component {
   render() {
     const {recommends} = this.props;
     return (
-      <div>
+      <div>:
         <Spots
           recommends={recommends}
         />

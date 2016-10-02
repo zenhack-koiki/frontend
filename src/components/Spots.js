@@ -14,13 +14,13 @@ export default class Spots extends Component {
       	<div className="gridmaster-result">
           {recommends.map(item =>
             <div className="grid-result">
-              <a href={'https://www.google.co.jp/maps/place/' + document.encodeURIComponent(item.spot) + '/@' + item.latitude + ',' + item.longitude + ',17z/'} >
+              <a href={'https://www.google.co.jp/maps/place/' + encodeURIComponent(item.spot) + '/@' + item.latitude + ',' + item.longitude + ',17z/'} >
                 <p className="article1">
                     <span className="article-title">{item.distance}km</span>
                     <br />
                     {item.spot}<br />
                 </p>
-                <img src={item.image_url} />
+                <img src={item.url} />
                 <p className="go-to-article">
                   <i className="fa fa-arrow-circle-right" aria-hidden="true"></i> MAP
                 </p>
