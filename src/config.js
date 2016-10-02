@@ -1,7 +1,7 @@
 require('babel-polyfill');
 
-const title = 'Zenhack';
-const description = 'Zenhack';
+const title = 'spot4u';
+const description = 'spot4u';
 
 const environment = {
   development: {
