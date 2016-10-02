@@ -49,8 +49,8 @@ export default class Home extends Component {
                 fetcher
                   .images
                   .load({
-                    latitude: Number(pos.coords.latitude).toFixed(5),
-                    longitude: Number(pos.coords.longitude).toFixed(5)
+                    latitude: Number(pos.coords.latitude),
+                    longitude: Number(pos.coords.longitude)
                   })
                   .then(
                     () => {
