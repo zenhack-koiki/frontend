@@ -13,7 +13,8 @@ export default class Photos extends Component {
     loading: PropTypes.bool.isRequired
   };
   state = {
-    index: 0
+    index: 0,
+    className: ''
   };
 
   render() {
@@ -108,6 +109,12 @@ export default class Photos extends Component {
                     </div>
                   </Swipeable>
           )
+        }
+        {
+          this.state.className === 'yay' ?
+            <div className={styles.yaynotify} >Like</div> :
+          this.state.className === 'nope' ?
+            <div className={styles.nopenotify}>nope</div> : ''
         }
         {
           loading ? <Loading /> : ''

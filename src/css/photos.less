@@ -36,6 +36,7 @@
 
 .flick{
   position: absolute;
+  overflow: hidden;
 }
 
 .flick.yay{
@@ -106,24 +107,42 @@
   }
 }
 
-.loading {
-  position: absolute;
-  z-index: 99999;
-  top: 0;
-  background-color: white;
-  opacity: 0.8;
-  padding: 80px 30px 380px;
-  min-height: 360px;
-  background-size: cover;
-  background-position: center;
-  width: 100vw;
-  height: 100vh;
-  animation: slideup 0.25s ease-out;
+@keyframes yaynotify {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-60%);
+    opacity: 0;
+  }
+}
+@keyframes nopenotify {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-40%);
+    opacity: 0;
+  }
 }
 
-.loading img{
+.yaynotify,
+.nopenotify {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  top: -5000px;
+  z-index: 8000;
+}
+
+.yaynotify {
+  animation: yaynotify 5s ease-out;
+  background-color: #41ad6c;
+  right: 20px;
+}
+
+.nopenotify {
+  animation: nopenotify 5s ease-out;
+  background-color: #ef5318;
+  left: 20px;
 }
