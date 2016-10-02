@@ -61,7 +61,7 @@
 .yayarrow{
   display: none;
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.7;
   position: absolute;
   top: 50%;
   width: 200px;
@@ -73,13 +73,18 @@
   justify-content: center;
 }
 
+.nopearrow img,
+.yayarrow img{
+  width: 50px;
+}
+
 .nopearrow{
   left: -100px;
-  background-color: red;
+  background-color: #ef5318;
 }
 .yayarrow{
   right: -100px;
-  background-color: green;
+  background-color: #41ad6c;
 }
 
 .nopearrow .note{
@@ -88,4 +93,37 @@
 
 .yayarrow .note{
   transform: translateX(-25%);
+}
+
+@keyframes slideup {
+  0% {
+    transform: translateY(100%);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 0.8;
+  }
+}
+
+.loading {
+  position: absolute;
+  z-index: 99999;
+  top: 0;
+  background-color: white;
+  opacity: 0.8;
+  padding: 80px 30px 380px;
+  min-height: 360px;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  animation: slideup 0.25s ease-out;
+}
+
+.loading img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
