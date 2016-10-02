@@ -27,7 +27,7 @@ export default store => {
           cb();
         }
       }/>
-      <Route path={uris.pages.recommends} component={Recommends} onEnter={
+    <Route path={uris.pages.recommends} component={Recommends} onEnter={
         (next, replace, cb) => {
           const state = store.getState();
           if ( !state.recommends ||

@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
 import { set } from '../modules/sessions';
 import uuid from 'uuid';
+import Helmet from 'react-helmet';
+import config from '../config';
 
 @asyncConnect([{
   promise: ({store: {dispatch}}) => {
@@ -54,6 +56,7 @@ export default class App extends Component {
     return (
       <div>
         {this.props.children}
+        <Helmet {...config.app.head} title="Find your memorable place" />
       </div>
     );
   }
