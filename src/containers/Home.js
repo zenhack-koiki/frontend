@@ -46,7 +46,6 @@ export default class Home extends Component {
             () => {
               this.props.load();
               navigator.geolocation.getCurrentPosition((pos) => {
-                console.log(pos.coords);
                 fetcher
                   .images
                   .load({
