@@ -22,7 +22,6 @@ export default store => {
           const state = store.getState();
           if ( !state.images ||
                !state.images.loaded ) {
-            console.log(state);
             replace(uris.pages.defaults);
           }
           cb();
@@ -34,9 +33,8 @@ export default store => {
           if ( !state.recommends ||
                !state.recommends.loaded ) {
             replace(uris.pages.defaults);
-          } else {
-            cb();
           }
+          cb();
         }
       }
       />
