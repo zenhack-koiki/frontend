@@ -26,8 +26,8 @@ export default function reducer(state = initialState, action = {}) {
 export function set(coords) {
   return {
     type: SET,
-    latitude: Number(coords.latitude),
-    longitude: Number(coords.longitude)
+    latitude: Number(coords.latitude).toFixed(5),
+    longitude: Number(coords.longitude).toFixed(5)
   };
 }
 
