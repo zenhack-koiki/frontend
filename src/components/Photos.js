@@ -86,7 +86,14 @@ export default class Photos extends Component {
                       backgroundImage: 'url(' + image.url + ')',
                       zIndex: images.length - _index
                     }}
-                  />
+                  >
+                    <div className={styles.nopearrow} >
+                      <div className={styles.note}>Nope</div>
+                    </div>
+                    <div className={styles.yayarrow} >
+                      <div className={styles.note}>Like</div>
+                    </div>
+                  </Swipeable>
           )
         }
       </div>

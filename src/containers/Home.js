@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import { push } from 'react-router-redux';
 import { set } from '../modules/location';
 import {
-  Signature
+  Signature,
+  Logo
 } from 'components';
 
 @connect(
@@ -28,12 +29,10 @@ export default class Home extends Component {
   render() {
     const {fetcher, lang} = this.context;
     return (
-      <div>
+      <div className="home" >
         <Signature
-          lead="YOUR PLACE"
           sublead="- find your memorable place -"
           button="Search near place"
-          image={require('../images/signature.png')}
           onClick={
             () => {
               navigator.geolocation.getCurrentPosition((pos) => {
@@ -55,6 +54,9 @@ export default class Home extends Component {
             }
           }
         />
+      <Logo
+        image={require('../images/spot4u.png')}
+      />
       </div>
     );
   }
