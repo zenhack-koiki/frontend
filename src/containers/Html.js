@@ -36,7 +36,7 @@ export default class Html extends Component {
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
           <link href="https://fonts.googleapis.com/css?family=Graduate|Telex|Metrophobic" rel="stylesheet" type="text/css" />
         	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
-        	<link rel="shortcut icon" href="favicon.ico" type="./favicon.ico"/>
+        	<link rel="shortcut icon" href="/images/favicon.png" type="./favicon.ico"/>
 
         	<link rel="stylesheet" href="/css/normalize.css" />
         	<link rel="stylesheet" type="text/css" href="/css/style.css" />
