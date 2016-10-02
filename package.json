@@ -121,6 +121,7 @@
     "socket.io": "^1.3.7",
     "socket.io-client": "^1.3.7",
     "superagent": "^1.6.1",
+    "touch-emulator": "^1.0.0",
     "unroute": "0.0.2",
     "url-loader": "^0.5.7",
     "uuid": "^2.0.3",

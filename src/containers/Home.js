@@ -50,8 +50,8 @@ export default class Home extends Component {
                 fetcher
                   .images
                   .load({
-                    latitude: pos.coords.latitude,
-                    longitude: pos.coords.longitude
+                    latitude: Number(pos.coords.latitude),
+                    longitude: Number(pos.coords.longitude)
                   })
                   .then(
                     () => {
