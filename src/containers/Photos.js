@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import {setLocation} from '../modules/recommends';
 import uris from '../uris';
 import {
   Footer,
@@ -18,6 +19,7 @@ import { push } from 'react-router-redux';
       fetcher.likes.select(values);
     },
     recommend: (fetcher, values, lang) => {
+      dispatch(setLocation(values));
       fetcher
       .recommends
       .load(values)
