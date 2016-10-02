@@ -47,6 +47,20 @@ ol, ul {
 	background-color: #ffffff;
 }
 
+.logo-spot {
+	position: fixed;
+	top:40px;
+	left:20%;
+	height: 10vh;
+	width: 60vw;
+  z-index: 101;
+}
+
+.logo-spot img {
+	width: 100%;
+	margin: 0 auto;
+}
+
 .logo img {
     width: 320px;
     margin: 0 auto;
@@ -84,6 +98,10 @@ img {
 	font-size: 4.4rem;
   right: 10px;
 	color: #45b035;
+	margin:5px;
+	padding: 5px;
+	border:solid 2px #45b035;
+	border-radius: 0.1em;
 }
 
 .message .none{
@@ -92,90 +110,10 @@ img {
 	font-size: 4.4rem;
   left: 10px;
 	color: #c25152;
-}
-
-nav {
-	position: fixed;
-	text-align: right;
-  top: 0;
-  right: 0;
-  margin: 20px;
-  padding-right: 3.4rem;
-  padding-top: 2.6rem;
-  z-index: 100;
-}
-
-nav ul {
-	margin-top: 15px;
-	display: none;
-  opacity: 0;
-}
-
-nav.opened ul {
-	display: block;
-	opacity: 1;
-}
-
-nav li a {
-  display: block;
-  padding: 5px 30px 0px 30px;
-  font-size: 17px;
-  line-height: 2.2;
-  text-align: right;
-  font-size: 2.0rem;
-}
-
-nav .humberger {
-	width: 40px;
-  height: 40px;
-  padding-top: 10px;
-  display: inline-block;
-  cursor: pointer;
-  position: relative;
-}
-
-nav .humberger .rentagle1,
-nav .humberger .rentagle2,
-nav .humberger .rentagle3
- {
-	display: block;
-  width: 40px;
-  height: 4px;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  position: absolute;
-}
-
-nav .humberger .rentagle2 {
-	top: 20px;
-	left: 10px;
-	width: 20px;
-}
-
-nav .humberger .rentagle3 {
-	top: 30px;
-	left: 10px;
-	width: 20px;
-}
-
-nav .humberger .rentagle1.rentagleClick1 {
-		top: 20px;
-    -o-transform: rotate(405deg);
-    -moz-transform: rotate(405deg);
-    -webkit-transform: rotate(405deg);
-    -ms-transform: rotate(405deg);
-    transform: rotate(405deg);
-}
-nav .humberger .rentagle2.rentagleClick2 {
-    opacity: 0;
-}
-nav .humberger .rentagle3.rentagleClick3 {
-		top: 20px;
-    -o-transform: rotate(-405deg);
-    -moz-transform: rotate(-405deg);
-    -webkit-transform: rotate(-405deg);
-    -ms-transform: rotate(-405deg);
-    transform: rotate(-405deg);
+	margin:5px;
+	padding: 5px;
+	border:solid 2px #c25152;
+	border-radius: 0.1em;
 }
 
 /* header */
@@ -206,7 +144,9 @@ nav .humberger .rentagle3.rentagleClick3 {
 }
 
 .site-description {
-	margin-bottom: 50px;
+	margin-top: 400px;
+	margin-bottom: 20px;
+	font-size: 2.0rem;
 }
 
 .buttons .button {
@@ -215,13 +155,13 @@ nav .humberger .rentagle3.rentagleClick3 {
 
 .button {
 	display: inline-block;
-	width: 200px;
+	width: 250px;
 	padding: 20px;
 	border-radius: 4px;
 	color: #fff;
 	text-decoration: none;
 	letter-spacing: 1px;
-	font-size: 1.2rem;
+	font-size: 2.2rem;
 }
 
 .button:hover {

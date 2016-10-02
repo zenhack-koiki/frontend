@@ -2,42 +2,38 @@ import React, {Component, PropTypes} from 'react';
 
 export default class Signature extends Component {
   static propTypes = {
-    lead: PropTypes.string.isRequired,
     sublead: PropTypes.string.isRequired,
     button: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
   };
 
   render() {
     const {
-      lead,
       sublead,
       button,
-      image,
       onClick
     } = this.props;
+    const styles = require('../css/signature.less');
 
     return (
       <header
-        className="header"
-        style={{
-          backgroundImage: 'url(' + image + ')'
-        }}>
-      	<h2 className="site-title">{lead}</h2>
-      	<p className="site-description">{sublead}</p>
-      	<div className="buttons">
-      		<a
-            className="button"
-            href="#"
-            onClick={
-              evt => {
-                evt.preventDefault();
-                onClick();
-              }
-            }>
-          {button}</a>
-      	</div>
+        className={'header ' + styles.header}
+      >
+        <div className={styles.composer}>
+        	<p className={'site-description ' + styles.description}>{sublead}</p>
+        	<div className="buttons">
+        		<a
+              className="button"
+              href="#"
+              onClick={
+                evt => {
+                  evt.preventDefault();
+                  onClick();
+                }
+              }>
+            {button}</a>
+        	</div>
+        </div>
       </header>
     );
   }
