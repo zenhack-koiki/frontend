@@ -24,14 +24,6 @@ app.use(Express.static(path.join(__dirname, '..', 'static')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('*', (req, res, next)=>{
-  if ( !__DEVELOPMENT__ && req.protocol === 'http' ) {
-    res.redirect(uris.base + req.url);
-  } else {
-    next();
-  }
-});
-
 app.use('/apis/*', (req, res) => {
   const base = ( config.api.port === 443 ? 'https' : 'http' ) +
                '://' +
