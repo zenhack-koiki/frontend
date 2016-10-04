@@ -79,7 +79,7 @@ server({
 });
 
 app.get('/', (req, res)=>{
-  const lang = String.trim((req.headers['accept-language'] || '').split(',')[0]) || 'en';
+  const lang = String.trim((req.headers['accept-language'] || '').split(',')[0].split('-')[0].split('_')[0]) || 'en';
   console.log(lang, req.headers['accept-language']);
   res.redirect(uris.normalize( uris.pages.root, {lang} ));
 });
