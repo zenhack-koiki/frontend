@@ -2,14 +2,14 @@ import React, {Component, PropTypes} from 'react';
 
 export default class Signature extends Component {
   static propTypes = {
-    sublead: PropTypes.string.isRequired,
+    lead: PropTypes.string.isRequired,
     button: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
   };
 
   render() {
     const {
-      sublead,
+      lead,
       button,
       onClick
     } = this.props;
@@ -20,7 +20,7 @@ export default class Signature extends Component {
         className={'header ' + styles.header}
       >
         <div className={styles.composer}>
-        	<p className={'site-description ' + styles.description}>{sublead}</p>
+        	<p className={'site-description ' + styles.description}>{lead}</p>
         	<div className="buttons">
         		<a
               className="button"

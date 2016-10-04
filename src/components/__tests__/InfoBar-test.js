@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import {reduxReactRouter} from 'redux-router';
 import createHistory from 'history/lib/createMemoryHistory';
 import createStore from 'redux/create';
-import ApiClient from 'promise-apiclient';
+import {ApiClient} from 'koiki';
 const client = new ApiClient();
 
 describe('InfoBar', () => {
