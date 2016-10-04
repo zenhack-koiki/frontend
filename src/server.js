@@ -1,21 +1,18 @@
 import {server} from 'koiki';
 import Express from 'express';
 import config from './config';
-import fs from 'fs-extra';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import path from 'path';
 import Html from './containers/Html';
 import http from 'http';
-import recursive from 'recursive-readdir';
 import uris from './uris';
 import routes from './routes';
 import bodyParser from 'body-parser';
-import modules from './modules';
+import reducers from './reducers';
 import PrettyError from 'pretty-error';
 import 'isomorphic-fetch';
 
-const i18n = {};
 const app = new Express();
 const pretty = new PrettyError();
 
@@ -27,13 +24,12 @@ app.use(Express.static(path.join(__dirname, '..', 'static')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-recursive( __dirname + '/../i18n', (err, files) => {
-  files.map(file => {
-    console.log('### loading lang files');
-    const messages = fs.readJsonSync( file, {throws: false});
-    const lang = path.basename(file, '.json');
-    i18n[lang] = messages;
-  });
+app.get('*', (req, res, next)=>{
+  if ( !__DEVELOPMENT__ && req.protocol === 'http' ) {
+    res.redirect(uris.base + req.url);
+  } else {
+    next();
+  }
 });
 
 app.use('/apis/*', (req, res) => {
@@ -70,17 +66,16 @@ server({
     root: uris.pages.root
   },
   urls: uris.resources,
-  i18n,
-  reducers: {
-    ...modules
-  },
+  i18ndir: __dirname + '/../i18n',
+  reducers,
   Html,
   routes,
   handlers: {
     error: error => {
       console.error('ROUTER ERROR:', pretty.render(error));
     }
-  }
+  },
+  isDevelopment: __DEVELOPMENT__
 });
 
 app.get('/', (req, res)=>{

@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react';
-import ApiClient from 'promise-apiclient';
+import {ApiClient} from 'koiki';
 import uris from '../uris';
 import Fetcher from 'redux-fetch-dispatcher';
 import { connect } from 'react-redux';
 import { asyncConnect } from 'redux-connect';
-import { set } from '../modules/sessions';
+import { set } from '../reducers/sessions';
 import uuid from 'uuid';
 import Helmet from 'react-helmet';
 import config from '../config';
@@ -17,7 +17,9 @@ import config from '../config';
   }
 }])
 @connect(
-  state => state,
+  state => ({
+    i18n: state.i18n
+  }),
   dispatch => ({
     dispatch: (...args) => dispatch(...args)
   })
@@ -29,11 +31,13 @@ export default class App extends Component {
     children: PropTypes.object,
     dispatch: PropTypes.func.isRequired,
     params: PropTypes.object.isRequired,
+    i18n: PropTypes.object.isRequired
   };
 
   static childContextTypes = {
     fetcher: PropTypes.object.isRequired,
     lang: PropTypes.string.isRequired,
+    i18n: PropTypes.object.isRequired
   };
 
   getChildContext() {
@@ -48,7 +52,8 @@ export default class App extends Component {
           referer: uris.base
         } : undefined)
       }),
-      lang: this.props.params.lang
+      lang: this.props.params.lang,
+      i18n: this.props.i18n.msg,
     };
   }
 

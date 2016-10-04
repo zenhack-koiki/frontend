@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import uris from '../uris';
 import {connect} from 'react-redux';
 import { push } from 'react-router-redux';
-import { load, set } from '../modules/location';
+import { load, set } from '../reducers/location';
 import {
   Signature,
   Logo,
@@ -31,17 +31,18 @@ export default class Home extends Component {
 
   static contextTypes = {
     fetcher: PropTypes.object.isRequired,
-    lang: PropTypes.string.isRequired
+    lang: PropTypes.string.isRequired,
+    i18n: PropTypes.object.isRequired
   };
 
   render() {
     const {loading, locationLoading} = this.props;
-    const {fetcher, lang} = this.context;
+    const {fetcher, lang, i18n} = this.context;
     return (
       <div className="home" >
         <Signature
-          sublead="- find your memorable place -"
-          button="Search near place"
+          lead={i18n.lead}
+          button={i18n.start}
           onClick={
             () => {
               this.props.load();

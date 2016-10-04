@@ -88,9 +88,10 @@ module.exports = {
   resolve: {
     modulesDirectories: [
       'src',
-      'node_modules'
+      'node_modules',
+      'i18n'
     ],
-    extensions: ['', '.json', '.js', '.jsx']
+    extensions: ['', '.json', '.js', '.jsx', '.properties']
   },
   plugins: [
     // hot reload
@@ -103,5 +104,8 @@ module.exports = {
       __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
     }),
     webpackIsomorphicToolsPlugin.development()
-  ]
+  ],
+  externals: {
+    fs: '{}'
+  }
 };

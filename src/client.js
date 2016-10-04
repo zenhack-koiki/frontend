@@ -7,14 +7,13 @@ import uris from './uris';
 
 import {client} from 'koiki';
 import 'react-fastclick';
-import modules from './modules';
+import reducers from './reducers';
 import emulator from 'touch-emulator';
 emulator();
 
 client({
   urls: uris.resources,
-  reducers: {
-    ...modules
-  },
-  routes
+  reducers,
+  routes,
+  isDevelopment: __DEVELOPMENT__
 });
