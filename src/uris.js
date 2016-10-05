@@ -1,33 +1,4 @@
-import config from './config';
-const base = ( config.app.port === 443 ? 'https' : 'http' ) +
-             '://' +
-             config.app.host +
-             ( config.app.port === 80 || config.app.port === 443
-               ? ''
-               : ':' + config.app.port);
-
 const uris = {
-  base,
-  resources: {
-    images: {
-      load: {
-        url: base + '/apis/images',
-        method: 'GET'
-      }
-    },
-    likes: {
-      select: {
-        url: base + '/apis/likes',
-        method: 'POST'
-      }
-    },
-    recommends: {
-      load: {
-        url: base + '/apis/recommend/index.json',
-        method: 'GET'
-      }
-    }
-  },
   pages: {
     defaults: '/en',
     root: '/:lang',

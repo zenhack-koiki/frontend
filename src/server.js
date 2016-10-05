@@ -4,9 +4,9 @@ import config from './config';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import path from 'path';
-import Html from './containers/Html';
 import http from 'http';
 import uris from './uris';
+import urls from './urls';
 import routes from './routes';
 import bodyParser from 'body-parser';
 import reducers from './reducers';
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('*', (req, res, next)=>{
   if ( !__DEVELOPMENT__ && req.headers['x-forwarded-proto'] !== 'https') {
-    res.redirect(uris.base + req.url);
+    res.redirect(config.app.base + req.url);
   } else {
     next();
   }
@@ -62,13 +62,11 @@ app.use('/apis/*', (req, res) => {
 
 server({
   app,
-  uris: {
-    root: uris.pages.root
-  },
-  urls: uris.resources,
+  path: uris.pages.root,
+  origin: config.app.base,
+  urls,
   i18ndir: __dirname + '/../i18n',
   reducers,
-  Html,
   routes,
   handlers: {
     error: error => {

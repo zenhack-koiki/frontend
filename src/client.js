@@ -3,7 +3,7 @@
  */
 import 'babel-polyfill';
 import routes from './routes';
-import uris from './uris';
+import urls from './urls';
 
 import {client} from 'koiki';
 import 'react-fastclick';
@@ -12,7 +12,7 @@ import emulator from 'touch-emulator';
 emulator();
 
 client({
-  urls: uris.resources,
+  urls,
   reducers,
   routes,
   isDevelopment: __DEVELOPMENT__

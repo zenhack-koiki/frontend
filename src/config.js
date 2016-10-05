@@ -12,6 +12,15 @@ const environment = {
   }
 }[process.env.NODE_ENV || 'development'];
 
+const appHost = process.env.APP_HOST || 'localhost';
+const appPort = Number( process.env.APP_PORT || 3000 );
+const base = ( appPort === 443 ? 'https' : 'http' ) +
+             '://' +
+             appHost +
+             ( appPort === 80 || appPort === 443
+               ? ''
+               : ':' + appPort);
+
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
   port: Number( process.env.PORT || 3000 ),
@@ -20,8 +29,9 @@ module.exports = Object.assign({
     port: 80
   },
   app: {
-    host: process.env.APP_HOST || 'localhost',
-    port: Number( process.env.APP_PORT || 3000 ),
+    base,
+    host: appHost,
+    port: appPort,
     title: title,
     description: description,
     head: {
@@ -39,6 +49,14 @@ module.exports = Object.assign({
         {property: 'og:creator', content: '@side_road'},
         {property: 'og:image:width', content: '300'},
         {property: 'og:image:height', content: '300'}
+      ],
+      link: [
+        {rel: 'shortcut icon', href: '/images/favicon.png'},
+        {rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Graduate|Telex|Metrophobic', },
+        {rel: 'stylesheet', type: 'text/css', href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css' },
+        {rel: 'stylesheet', type: 'text/css', href: '/css/normalize.css' },
+        {rel: 'stylesheet', type: 'text/css', href: '/css/style.css' },
+        {rel: 'stylesheet', type: 'text/css', href: '/css/colors.css' }
       ]
     }
   }
