@@ -9,9 +9,9 @@ export default class Logo extends Component {
     const {
       image,
     } = this.props;
-
+    const styles = require('../css/logo.less');
     return (
-      <div className="logo-spot">
+      <div className={styles.logo}>
         <img src={image} />
       </div>
     );

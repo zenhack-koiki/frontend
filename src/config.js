@@ -1,4 +1,5 @@
 require('babel-polyfill');
+const normalize = require('normalize-url');
 
 const title = 'spot4u';
 const description = 'spot4u';
@@ -14,12 +15,7 @@ const environment = {
 
 const appHost = process.env.APP_HOST || 'localhost';
 const appPort = Number( process.env.APP_PORT || 3000 );
-const base = ( appPort === 443 ? 'https' : 'http' ) +
-             '://' +
-             appHost +
-             ( appPort === 80 || appPort === 443
-               ? ''
-               : ':' + appPort);
+const base = normalize( appHost + ':' + appPort);
 
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',

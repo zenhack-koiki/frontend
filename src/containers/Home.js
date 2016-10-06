@@ -3,6 +3,7 @@ import uris from '../uris';
 import {connect} from 'react-redux';
 import { push } from 'react-router-redux';
 import { load, set } from '../reducers/location';
+import { stringify } from 'koiki';
 import {
   Signature,
   Logo,
@@ -39,7 +40,7 @@ export default class Home extends Component {
     const {loading, locationLoading} = this.props;
     const {fetcher, lang, i18n} = this.context;
     return (
-      <div className="home" >
+      <div>
         <Signature
           lead={i18n.lead}
           button={i18n.start}
@@ -56,7 +57,7 @@ export default class Home extends Component {
                   .then(
                     () => {
                       this.props.setLocation(pos.coords);
-                      this.props.push(uris.normalize( uris.pages.photos, {lang} ));
+                      this.props.push(stringify( uris.pages.photos, {lang} ));
                     }
                   );
               },

@@ -5,6 +5,7 @@ import favicon from 'serve-favicon';
 import compression from 'compression';
 import path from 'path';
 import http from 'http';
+import { stringify } from 'koiki';
 import uris from './uris';
 import urls from './urls';
 import routes from './routes';
@@ -12,6 +13,7 @@ import bodyParser from 'body-parser';
 import reducers from './reducers';
 import PrettyError from 'pretty-error';
 import 'isomorphic-fetch';
+import normalize from 'normalize-url';
 
 const app = new Express();
 const pretty = new PrettyError();
@@ -33,12 +35,7 @@ app.get('*', (req, res, next)=>{
 });
 
 app.use('/apis/*', (req, res) => {
-  const base = ( config.api.port === 443 ? 'https' : 'http' ) +
-               '://' +
-               config.api.host +
-               ( config.api.port === 80 || config.api.port === 443
-                 ? ''
-                 : ':' + config.api.port);
+  const base = normalize( config.api.host + ':' + config.api.port);
   const url = base + (req.originalUrl.replace(/^\/apis/, ''));
   console.log('# proxing', url, req.method, req.body);
   fetch(
@@ -79,7 +76,7 @@ server({
 app.get('/', (req, res)=>{
   const lang = String.trim((req.headers['accept-language'] || '').split(',')[0].split('-')[0].split('_')[0]) || 'en';
   console.log(lang, req.headers['accept-language']);
-  res.redirect(uris.normalize( uris.pages.root, {lang} ));
+  res.redirect(stringify( uris.pages.root, {lang} ));
 });
 
 if (config.port) {
