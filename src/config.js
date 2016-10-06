@@ -1,5 +1,5 @@
 require('babel-polyfill');
-const normalize = require('normalize-url');
+const normalize = require('koiki').normalize;
 
 const title = 'spot4u';
 const description = 'spot4u';
@@ -15,7 +15,7 @@ const environment = {
 
 const appHost = process.env.APP_HOST || 'localhost';
 const appPort = Number( process.env.APP_PORT || 3000 );
-const base = normalize( appHost + ':' + appPort);
+const base = normalize( appHost + ':' + appPort );
 
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
