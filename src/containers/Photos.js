@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {setLocation} from '../reducers/recommends';
 import uris from '../uris';
+import { stringify } from 'koiki';
 import {
   Footer,
   Photos as PhotosComponent
@@ -25,7 +26,7 @@ import { push } from 'react-router-redux';
       .recommends
       .load(values)
       .then(
-        () => dispatch(push(uris.normalize(uris.pages.recommends, {lang})))
+        () => dispatch(push(stringify(uris.pages.recommends, {lang})))
       );
     }
   })
@@ -56,8 +57,6 @@ export default class Photos extends Component {
       session,
       loading
     } = this.props;
-    console.log(images);
-
     return (
       <div>
         <PhotosComponent

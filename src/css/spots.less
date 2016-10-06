@@ -12,3 +12,82 @@
 .spots{
     animation: slideup 0.25s ease-out;
 }
+
+.gridmaster {
+  display: table;
+  width: 100%;
+}
+
+.grid {
+  display: table-cell;
+  width: 33.3%;
+  padding: 0;
+  position: relative;
+	/*visibility:hidden;*/
+	overflow: hidden;
+}
+
+.grid p {
+	left: 5%;
+	margin: 0;
+	z-index: 10;
+}
+
+.article {
+	position: absolute;
+	top: 2%;
+	right: 2%;
+	text-align: right;
+	font-size: 1.8rem;
+  color: #FFFFFB; /* GOFUN */
+}
+
+.goto {
+	display: none;
+  color: #FFFFFB; /* GOFUN */
+}
+
+.title{
+	font-size: 2.8rem;
+	font-family: 'Graduate', cursive;
+}
+
+.grid img {
+	width: 100%;
+	filter:brightness(60%);
+	-webkit-filter: brightness(60%);
+	vertical-align:bottom;
+	transition: 0.3s;
+}
+
+.grid a:hover img {
+	opacity: 0.8;
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+}
+
+.grid a::after {
+	display: none;
+}
+
+@media (max-width: 768px) {
+  .gridmaster {
+    display: block;
+  }
+  .grid {
+    width: 100%;
+    display: block;
+    padding: 0px;
+  }
+  .goto {
+    position: absolute;
+    display: block;
+    top: 80%;
+    right: 2%;
+    text-align: right;
+    font-size: 3.8rem;
+  }
+}

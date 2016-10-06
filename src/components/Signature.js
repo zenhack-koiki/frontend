@@ -16,14 +16,12 @@ export default class Signature extends Component {
     const styles = require('../css/signature.less');
 
     return (
-      <header
-        className={'header ' + styles.header}
-      >
+      <header className={styles.header} >
         <div className={styles.composer}>
-        	<p className={'site-description ' + styles.description}>{lead}</p>
-        	<div className="buttons">
+        	<p className={styles.description}>{lead}</p>
+        	<div>
         		<a
-              className="button"
+              className={styles.button}
               href="#"
               onClick={
                 evt => {

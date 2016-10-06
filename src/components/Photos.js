@@ -85,7 +85,6 @@ export default class Photos extends Component {
                       () => up()
                     }
                     className={
-                      'flick ' +
                       styles.flick + ' ' +
                       (_index === 0 ? styles[this.state.className] : '') + ' ' +
                       (image.first ? styles.first : '' )
