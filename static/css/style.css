@@ -29,3 +29,16 @@ ol, ul {
 img {
     border: 0;
 }
+
+body {
+	background-color: rgba(255,255,251,1);/* GOFUN */
+	color: #FFFFFB;; /* NIBI */
+}
+
+a {
+  color: #7BA23F;
+}
+
+a::after {
+	background-color: #080808; /* KURO */
+}
