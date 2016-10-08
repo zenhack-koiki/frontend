@@ -33,6 +33,12 @@ app.get('*', (req, res, next)=>{
   }
 });
 
+app.get('/', (req, res)=>{
+  const lang = String.trim((req.headers['accept-language'] || '').split(',')[0].split('-')[0].split('_')[0]) || 'en';
+  console.log(lang, req.headers['accept-language']);
+  res.redirect(stringify( uris.pages.root, {lang} ));
+});
+
 app.use('/apis/*', (req, res) => {
   const base = normalize( config.api.host + ':' + config.api.port);
   const url = base + (req.originalUrl.replace(/^\/apis/, ''));
@@ -70,12 +76,6 @@ server({
     }
   },
   isDevelopment: __DEVELOPMENT__
-});
-
-app.get('/', (req, res)=>{
-  const lang = String.trim((req.headers['accept-language'] || '').split(',')[0].split('-')[0].split('_')[0]) || 'en';
-  console.log(lang, req.headers['accept-language']);
-  res.redirect(stringify( uris.pages.root, {lang} ));
 });
 
 if (config.port) {

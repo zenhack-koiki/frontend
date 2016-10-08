@@ -51,8 +51,7 @@ module.exports = Object.assign({
         {rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Graduate|Telex|Metrophobic', },
         {rel: 'stylesheet', type: 'text/css', href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css' },
         {rel: 'stylesheet', type: 'text/css', href: '/css/normalize.css' },
-        {rel: 'stylesheet', type: 'text/css', href: '/css/style.css' },
-        {rel: 'stylesheet', type: 'text/css', href: '/css/colors.css' }
+        {rel: 'stylesheet', type: 'text/css', href: '/css/style.css' }
       ]
     }
   }
