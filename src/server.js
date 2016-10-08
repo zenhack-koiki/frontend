@@ -5,7 +5,7 @@ import favicon from 'serve-favicon';
 import compression from 'compression';
 import path from 'path';
 import http from 'http';
-import { stringify, normalize } from 'koiki';
+import { normalize } from 'koiki';
 import uris from './uris';
 import urls from './urls';
 import routes from './routes';
@@ -24,20 +24,6 @@ app.use(Express.static(path.join(__dirname, '..', 'static')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.get('*', (req, res, next)=>{
-  if ( !__DEVELOPMENT__ && req.headers['x-forwarded-proto'] !== 'https') {
-    res.redirect(config.app.base + req.url);
-  } else {
-    next();
-  }
-});
-
-app.get('/', (req, res)=>{
-  const lang = String.trim((req.headers['accept-language'] || '').split(',')[0].split('-')[0].split('_')[0]) || 'en';
-  console.log(lang, req.headers['accept-language']);
-  res.redirect(stringify( uris.pages.root, {lang} ));
-});
 
 app.use('/apis/*', (req, res) => {
   const base = normalize( config.api.host + ':' + config.api.port);
