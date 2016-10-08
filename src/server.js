@@ -49,19 +49,19 @@ app.use('/apis/*', (req, res) => {
 });
 
 server({
+  urls,
+  reducers,
+  routes,
+  isDevelopment: __DEVELOPMENT__,
   app,
   path: uris.pages.root,
   origin: config.app.base,
-  urls,
   i18ndir: __dirname + '/../i18n',
-  reducers,
-  routes,
   handlers: {
     error: error => {
       console.error('ROUTER ERROR:', pretty.render(error));
     }
-  },
-  isDevelopment: __DEVELOPMENT__
+  }
 });
 
 if (config.port) {
