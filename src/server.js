@@ -32,6 +32,7 @@ app.use('/apis/*', (req, res) => {
   fetch(
     url,
     {
+      method: req.method,
       headers: {
         ...req.headers,
         host: config.api.host
