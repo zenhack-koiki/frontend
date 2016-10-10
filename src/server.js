@@ -28,23 +28,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/apis/*', (req, res) => {
   const base = normalize( config.api.host + ':' + config.api.port);
   const url = base + (req.originalUrl.replace(/^\/apis/, ''));
-  console.log('# proxing', url, req.method, req.body);
+  console.log('# proxing', url, req.method, req.body, req.headers);
   fetch(
     url,
     {
-      ...req,
+      headers: {
+        ...req.headers,
+        host: config.api.host
+      },
       body: req.method === 'POST' ? JSON.stringify(req.body) : ''
     })
     .then(
-      _res => _res
+      _res => console.log(_res) || _res
                 .json()
                 .then(
-                  json => console.log(json) || res.json(json),
-                  _err => console.log(_err) || res.json(_err)
+                  json => console.log('#Response JSON ', json) || res.json(json),
+                  _err => console.log('#Parse Error ', _err) || res.json(_err)
                 ),
-      _err => console.log(_err) || res.json(_err)
+      _err => console.log('#Fetch Error ', _err) || res.json(_err)
     ).catch(
-      err => console.log(err) || res.json(err)
+      err => console.log('#Unexpected Error ', err) || res.json(err)
     );
 });
 

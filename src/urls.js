@@ -4,7 +4,7 @@ const base = config.app.base;
 export default {
   images: {
     load: {
-      url: base + '/apis/images',
+      url: base + '/apis/images/search',
       method: 'GET'
     }
   },

@@ -21,7 +21,7 @@ module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
   port: Number( process.env.PORT || 3000 ),
   api: {
-    host: '52.197.202.44',
+    host: 'zenhack-api.herokuapp.com',
     port: 80
   },
   app: {
