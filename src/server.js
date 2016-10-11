@@ -61,6 +61,7 @@ server({
   path: uris.pages.root,
   origin: config.app.base,
   i18ndir: __dirname + '/../i18n',
+  statics: config.app.statics,
   handlers: {
     error: error => {
       console.error('ROUTER ERROR:', pretty.render(error));

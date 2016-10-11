@@ -45,7 +45,9 @@ module.exports = Object.assign({
         {property: 'og:creator', content: '@side_road'},
         {property: 'og:image:width', content: '300'},
         {property: 'og:image:height', content: '300'}
-      ],
+      ]
+    },
+    statics: {
       link: [
         {rel: 'shortcut icon', href: '/images/favicon.png'},
         {rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Graduate|Telex|Metrophobic', },
