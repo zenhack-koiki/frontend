@@ -26,9 +26,7 @@
       "command": "node bin/server.js",
       "env": {
         "NODE_PATH": "./src",
-        "NODE_ENV": "production",
-        "APP_HOST": "zenhack.herokuapp.com",
-        "APP_PORT": 443
+        "NODE_ENV": "production"
       }
     },
     "build": {
@@ -50,9 +48,7 @@
         "NODE_PATH": "./src",
         "NODE_ENV": "development",
         "HOST": "localhost",
-        "PORT": "3000",
-        "APP_HOST": "localhost",
-        "APP_PORT": 3000
+        "PORT": "3000"
       }
     }
   },
