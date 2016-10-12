@@ -13,8 +13,8 @@ const environment = {
   }
 }[process.env.NODE_ENV || 'development'];
 
-const appHost = process.env.APP_HOST || 'localhost';
-const appPort = Number( process.env.APP_PORT || 3000 );
+const appHost = process.env.GLOBAL_HOST || 'localhost';
+const appPort = Number( process.env.GLOBAL_PORT || 3000 );
 const base = normalize( appHost + ':' + appPort );
 
 module.exports = Object.assign({

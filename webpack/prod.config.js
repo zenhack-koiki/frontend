@@ -69,8 +69,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"' + process.env.NODE_ENV + '"',
-        APP_HOST: '"' + process.env.APP_HOST + '"',
-        APP_PORT: '"' + process.env.APP_PORT + '"',
+        GLOBAL_HOST: '"' + process.env.GLOBAL_HOST + '"',
+        GLOBAL_PORT: '"' + process.env.GLOBAL_PORT + '"',
       }
     }),
 
